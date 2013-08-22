@@ -1,6 +1,4 @@
 ﻿using System;
-using System.Net;
-using System.Net.Http;
 using System.Text;
 using System.Threading;
 using Zaz.Server.Advanced.Broker;
@@ -17,7 +15,7 @@ namespace Zaz.Server.Advanced.Service
             _context = context;
         }
 
-        public HttpResponseMessage RunCommand(string cmdKey, object cmd, string[] tags)
+        public string RunCommand(string cmdKey, object cmd, string[] tags)
         {
             var broker = (_context.Broker ?? Implementations.Broker.Value);
 
@@ -43,11 +41,7 @@ namespace Zaz.Server.Advanced.Service
                 msg.Append(log);
             }
 
-            return new HttpResponseMessage
-            {
-                StatusCode = HttpStatusCode.Accepted,
-                Content = new StringContent(msg.ToString())
-            };
+            return msg.ToString();
         }
     }
 }
