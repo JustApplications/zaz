@@ -11,8 +11,8 @@ namespace Zaz.Tests.Integration.Errors
     {
         static readonly string URL = "http://" + FortyTwo.LocalHost + ":9303/NonExistingCommands/";
 
-        object _postedCommand;
-        CommandHandlingContext _ctx;
+        // object _postedCommand;
+        // CommandHandlingContext _ctx;
         Exception _resultEx;
 
         [TestFixtureSetUp]

@@ -13,10 +13,10 @@ namespace Zaz.Client.Avanced.Client
 
         public ZazServerClient(string url, ZazConfiguration configuration = null)
         {
-            var handler = new WebRequestHandler
+            var handler = new HttpClientHandler
             {
                 MaxRequestContentBufferSize = 16777216,
-                MaxResponseHeadersLength = 16777216
+                // MaxResponseHeadersLength = 16777216
             };
 
             if (configuration != null && configuration.ConfigureHttp != null)
