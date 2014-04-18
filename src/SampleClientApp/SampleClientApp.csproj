@@ -80,7 +80,7 @@
       <Name>SampleHandlers</Name>
     </ProjectReference>
     <ProjectReference Include="..\ZazClient\ZazClient.csproj">
-      <Project>{EFA8DCC8-0286-4D52-8F11-66495B4F9DC4}</Project>
+      <Project>{efa8dcc8-0286-4d52-8f11-66495b4f9dc4}</Project>
       <Name>ZazClient</Name>
     </ProjectReference>
   </ItemGroup>
