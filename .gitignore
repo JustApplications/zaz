@@ -17,3 +17,4 @@ packages
 
 _NCrunch*
 *.ncrunch*
+.vs/config/applicationhost.config
