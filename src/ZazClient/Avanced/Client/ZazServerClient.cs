@@ -55,7 +55,13 @@ namespace Zaz.Client.Avanced.Client
 
         private Task<TOut> PostAsync<T, TOut>(string path, T req)
         {
-            return _client.PostAsync(path, CreateObjectContent(req))
+            //HttpCompletionOption.ResponseHeadersRead
+            _client.MaxResponseContentBufferSize = long.MaxValue;
+
+            var reqMessage = new HttpRequestMessage(HttpMethod.Post, path);
+            reqMessage.Content = CreateObjectContent(req);
+             
+            return _client.SendAsync(reqMessage, HttpCompletionOption.ResponseHeadersRead)
                 .ContinueWith(t =>
                 {
                     var resp = t.Result;
@@ -64,7 +70,7 @@ namespace Zaz.Client.Avanced.Client
                     {
                         throw new ZazTransportException("An error occurred while sending request.", resp);
                     }
-
+                    
                     return ReadContentAs<TOut>(resp.Content);
                 });
         }
