@@ -6,32 +6,11 @@ using System.Net.Http.Formatting;
 using System.Net.Http.Headers;
 using System.Text;
 using System.Threading.Tasks;
-using System.Web.Routing;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Converters;
-using Zaz.Server.Advanced;
 
 namespace WebApiContrib.Formatters.JsonNet
 {
-    public static class RoutingExtensions
-    {
-        public static RouteCollection MapCommandsService(this RouteCollection @this,
-            string prefix = "Commands/", ServerConfiguration configuration = null)
-        {
-            // Add / to the prefix, otherwise UI will not work            
-            prefix = prefix ?? "";
-            if (!prefix.EndsWith("/"))
-            {
-                prefix += "/";
-            }
-
-            var config = ConfigurationHelper.CreateServiceConfiguration(configuration);
-
-            @this.MapServiceRoute<CommandsService>(prefix, config);
-
-            return @this;
-        }
-    }
     /// Used this implementation: http://code.msdn.microsoft.com/Using-JSONNET-with-ASPNET-b2423706
     public class JsonNetFormatter2 : JsonMediaTypeFormatter
     {
